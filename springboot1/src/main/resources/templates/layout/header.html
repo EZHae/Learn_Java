@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <header th:fragment="myHeader(title)">
+        <h1 th:text="${title}">HEADER</h1>
+    </header>
+
+    <nav th:fragment="navigation">
+        <ul>
+            <li>
+                <!-- thymeleaf link(URL) expressions -->
+                <a th:href="@{/}">Home</a>
+            </li>
+        </ul>
+    </nav>
+</html>

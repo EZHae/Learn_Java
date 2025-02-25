@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab01</title>
+        
+        <!-- CSS 설정 -->
+        <style>
+            table, caption, th, td{
+                border: 1px solid black;
+                border-collapse: collapse;}
+        </style>
+	</head>
+	<body>
+        <a href="index.html">인덱스 페이지</a>
+		
+        <h1>HTML 테이블</h1>
+        <!-- thead, tbody, tfoot은 처리되는 값이 없지만, 테이블의 영역들의 구분을 짓기 위해 작성
+        없어도 처리에 문제는 없지만, 있으면 관리하기는 편함 -->
+        <table>
+            <caption>프론트엔드 과목 점수</caption>
+            <thead> <!-- table header(테이블 머릿글) -->
+                <tr> <!-- table row(테이블 행) -->
+                    <th>번호</th> <!-- table cell header-->
+                    <th>HTML</th>
+                    <th>CSS</th>
+                    <th>JavaScript</th>
+                </tr>
+            </thead>
+            <tbody> <!-- table body(테이블 내용) -->
+                <tr>
+                    <td>1</td> <!-- table cell data -->
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>2</td> <!-- table cell data -->
+                    <td>5</td>
+                    <td>10</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>3</td> <!-- table cell data -->
+                    <td>10</td>
+                    <td>20</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+            <tfoot> <!-- table footer(테이블 꼬릿글) -->
+                <tr>
+                    <th>총점</th>
+                    <td>25</td>
+                    <td>40</td>
+                    <td>45</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <h2>colspan (column span)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th colspan="2">전화번호</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>홍길동</td>
+                    <td>010-1234-5678</td>
+                    <td>02-1234-5678</td>
+                </tr>
+                <tr>
+                    <td>아이티윌</td>
+                    <td>010-0000-0000</td>
+                    <td>02-0000-0000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>rowspan (row span)</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <td>홍길동</td>
+                    <td>아이티윌</td>
+                <tr/>
+                <tr>
+                    <th rowspan="2"> 전화번호</th>
+                    <td>010-1234-5678</td>
+                    <td>010-0000-0000</td>
+                </tr>
+                <tr>
+                    <td>02-1234-5678</td>
+                    <td>02-0000-0000</td>
+                </tr>
+            </tbody>
+        </table>
+	</body>
+</html>
+
+
+

@@ -1,0 +1,45 @@
+<!-- HTML(Hyper-Text Markup Language)
+- HTML 요소(element): 태그(tag), 속성(attribute), 컨텐트(content)
+- HTML 문법: 
+    1. <tag attr_name="value1" attr2_name="value2" ...>content</tag>    *컨텐트가 있는 경우
+    2. <tag attr_name="value1" ... />   *컨텐트가 없는 경우
+- HTML 태그 이름들은 대/소문자를 구분하지 않지만, 소문자로만 작성하는 것을 권장.
+- 태그의 속성 값을 설정할 때는 큰따옴표("")와 작은따옴표('')를 모두 사용할 수 있음.
+-->
+
+<!DOCTYPE html> <!-- DTD(Document Type Declaration): 문서 종류 선언 -->
+<html>
+    <!-- head: 웹 페이지 설정. 인코딩, 타이틀, CSS, JavaScript, ... 설정. -->
+    <head>
+        <meta charset="UTF-8" />
+        <title>Lab01</title>
+    </head>
+    
+    <!-- body: 브라우저 화면에서 보여지는 부분. -->
+    <body>
+        <!-- heading 태그: h1 ~ h6. 문서 제목. 숫자가 커질수록 글자가 작아짐.-->
+        <h1>인덱스 페이지</h1>
+        <h2>Hello, 이지해</h2>
+        <h3>Hello, 이지해</h3>
+        <h4>Hello, 이지해</h4>
+        <h5>Hello, 이지해</h5>
+        <h6>Hello, 이지해</h6>
+        
+        <!-- <a>: anchor(링크 텍스트)
+            href: 연결할 주소
+        -->       
+        <a href="https://www.daum.net">다음</a>
+        <a href="https://www.naver.com">네이버</a> 
+        
+        <!-- <li>: 리스트 -->
+        <ul>
+            <li> <a href="section.html">Section Tag</a> </li>
+            <li> <a href="image.html">이미지</a> </li>
+            <li> <a href="list.html">리스트</a> </li>
+            <li> <a href="table.html">테이블</a> </li>
+            <li> <a href="form.html">폼 양식</a> </li>
+        </ul>
+    </body>
+</html>
+
+

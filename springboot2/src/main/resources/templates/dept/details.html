@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>JPA</title>
+	</head>
+	<body>
+		<div th:replace="~{/layout/fragments :: pageHeader('부서 상세 페이지')}"></div>
+        
+        <main>
+            <div>
+                <h1>부서 정보</h1>
+                <table th:object="${department}">
+                    <tbody>
+                        <tr>
+                            <td>부서코드</td>
+                            <td th:text="*{id}"></td>
+                        </tr>
+                        <tr>
+                            <td>부서이름</td>
+                            <td th:text="*{dname}"></td>
+                        </tr>
+                        <tr>
+                            <td>위치</td>
+                            <td th:text="*{location}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h1>직원 정보</h1>
+                <th:block th:switch=${#lists.isEmpty(employees)}>
+                    <th:block th:case="true">
+                        직원 정보가 없습니다.
+                    </th:block>
+                    <table th:case="false">
+                        <thead>
+                            <tr>
+                                <th>사번</th>
+                                <th>이름</th>
+                                <th>직무</th>
+                                <th>매니저</th>
+                                <th>입사일</th>
+                                <th>급여</th>
+                                <th>수당</th>
+                                <th>부서이름</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="emp : ${employees}" th:object="${emp}" >
+                                <td>
+                                    <!-- PathVaiable로 해보기 -->
+                                    <!-- 예시) /emp/details/7369 로 이동하는 링크 -->
+                                    <a th:href="@{/emp/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/emp/details/{id}(id=*{id})}" th:text="*{ename}"></a>
+                                </td>
+                                <td th:text="*{job}"></td>
+                                <td>
+                                    <!-- <th:block>은 HTML에서 태그 없이 Thymeleaf 코드만 실행할 때 사용. 
+                                    텍스트 뿐만아니라 다른 요소가 함께 들어간다면 <th:block>을 사용 하는 것이 효율적 -->
+                                    <a th:if="*{manager != null}" th:href="@{/emp/details/{id}(id=*{manager.id})}" 
+                                        th:text="*{manager.ename}"></a>
+                                    <th:block th:if="*{manager == null}">-</th:block>
+                                </td>
+                                <td th:text="*{hiredate}"></td>
+                                <td th:text="*{salary}"></td>
+                                <td th:text="*{commision != null} ? *{commision} : '-'"></td>
+                                <td>
+                                    <a th:href="@{/dept/details/{id}(id=*{department.id})}" th:text="*{department.dname}"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </th:block>
+            </div>
+        </main>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.spring2.repository.MemberDao">
+    
+    <!-- username 중복 체크에 사용할 SQL -->
+    <select id="selectByUsername" resultType="Member">
+        select * from members where username = #{username}
+    </select>
+    
+    <!-- email 중복 체크에서 사용할 SQL -->
+    <select id="selectByEmail" resultType="Member">
+        select * from members where email = #{email}
+    </select> 
+    
+    <insert id="insertUser">
+        insert into members (username, password, email, created_time, modified_time)
+            values (#{username}, #{password}, #{email}, systimestamp, systimestamp)
+    </insert>
+    
+    <select id="selectUser" resultType="Member">
+        select * from members where username = #{username} and password = #{password}
+    </select>
+</mapper>

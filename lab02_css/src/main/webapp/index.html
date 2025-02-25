@@ -1,0 +1,58 @@
+<!-- 
+Frondt-End 개발 언어:
+    1. HTML: 웹 페이지의 정적 컨텐트 (글씨, 링크, 이미지, 테이블, 폼, 리스트 등)들을 작성하는 언어.
+    2. CSS: 웹 페이지의 스타일 (요소 배치, 색상, 모양, 크기 등)들을 작성하는 언어.
+    3. JavaScript: 웹 페이지의 동적 변화, 이벤트 처리, 서버와 통신 등과 같은 기능을 구현하는 언어.
+        *브라우저에서 실행되는 프로그래밍 언어.
+
+CSS 적용 방법:
+    1. 외부(external) CSS: 별도의 css 파일에서 작성된 내용을 html 파일에서 링크해서 사용.
+    2. 내부(internal) CSS: html 파일의 <script> 태그 안에서 스타일을 작성.
+    3. inline CSS: 각각의 html 태그 요소 안에서 style 속성(attribute) 값을 작성.
+ -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab2 CSS</title>
+        
+        <!-- 외부 CSS 파일 링크 -->
+        <link rel="stylesheet" href="css/mystyle.css">
+        
+        <!-- 내부 CSS 작성 -->
+        <style>
+            div{
+                border: 4px dotted red;
+            }
+        </style>
+        <!-- 외부와 내부 CSS 문장 중 나중에 작성 한것으로 설정된다. -->
+        
+	</head>
+	<body>
+		<main> <!-- 웹 페이지의 주요 영역(main division)이라는 의미를 갖는 태그. (관리하기 편하게) -->
+            <section> <!-- 웹 페이지의 섹션 영역(section division)이라는 의미를 갖는 태그. -->
+                <h1>CSS</h1>
+                <h2>Cascading Style Sheet</h2>
+                
+                <div>Division 1</div>
+                <div>Division 2</div>
+                <!-- line CSS 작성 -->
+                <div style="border: 4px dashed darkgreen">Division 3</div>
+            </section>
+            
+            <section>
+                <h2>목차</h2>
+                <ul>
+                    <li> <a href="selector1.html">선택자 1</a> </li>
+                    <li> <a href="selector2.html">선택자 2</a> </li>
+                    <li> <a href="link.html">가상 선택자</a> </li>
+                    <li> <a href="table.html">테이블</a> </li>
+                    <li> <a href="example.html">CSS example</a> </li>
+                    <li> <a href="bootstrap.html">Bootstrap 설정</a> </li>
+                </ul>
+            </section>
+        </main>
+	</body>
+</html>
+

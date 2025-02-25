@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+#mainbar {
+    background-color: #001488;
+    padding: 10px;
+}
+
+#logo {
+    width: 300px;
+    height: 100px;
+}
+
+.wrapper {
+    position: relative;
+    overflow: auto;
+}
+
+#sidebar {
+    width: 160px;
+    float: left;
+}
+
+#sidebar_list {
+    list-style-type: none;
+    padding: 0px;
+    align-items: center;
+}
+
+.sidebar_item {
+    width: 160px;
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #001488;
+}
+.sidebar_item:hover {
+    background-color: #1A0D5D;
+}
+
+.sidebar_link {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin: 0px 180px;
+    width: 1200px;
+    margin-top: 15px;
+}
+
+.subtitle {
+    margin-left: 20px;
+}
+
+#highlight {
+    border: 2px solid black;
+    width: 1200px;
+}
+
+#highlight_list {
+    padding: 0px 10px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.highlight_item {
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.highlight_link {
+    text-decoration: none;
+}
+.highlight_link:hover {
+    text-decoration: underline;
+}
+
+.highlight_imgarea {
+    width: 200px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.highlight_img {
+    width: 200px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.highlight_textarea {
+    width: 190px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.highlight_title {
+    width: 190px;
+    height: 50px;
+    color: black;
+    font-size: small;
+}
+
+article {
+    margin-top: 10px;
+    border: 2px solid black;
+        width: 1200px;
+}
+
+#news_list {
+    list-style-type: none;
+    padding: 0px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.news_item {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: 350px;
+    height: 100px;
+}
+
+.news_link {
+    text-decoration: none;
+}
+
+.news_imgarea{
+    float: left;
+    vertical-align:top;
+    width: 120px;
+    height: 100px;
+}
+
+.news_img {
+    width: 120px;
+    height: 100px;
+}
+
+.news_textarea {
+    width: 220px;
+    height: 100px;
+    margin-left: 10px;
+    display:inline-block;
+}
+
+.news_title {
+    color: black;
+    font-weight: bold;
+    width: 220px;
+    height: 65px;
+    
+    display: -webkit-box; /* Flexbox 컨테이너 */
+    -webkit-box-orient: vertical; /* 수직 정렬 */
+    -webkit-line-clamp: 3; /* 최대 줄 수 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    text-overflow: ellipsis; /* ... 처리 */
+    white-space: normal; /* 줄바꿈 허용 */
+}
+
+.news_title:hover{
+    text-decoration: underline;
+}
+
+.news_source {
+    width: 220px;
+    height: 30px;
+    color: darkgray;
+}

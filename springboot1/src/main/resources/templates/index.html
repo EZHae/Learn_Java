@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Spring Boot 1</title>
+	</head>
+	<body>
+        <!-- thymeleaf fragment expressions:
+            src/main/resources/templates/layout/header.html 파일에 선언된
+            myHeader 프래그먼트를 replace(교체) 방식으로 끼워 넣기.
+            dev 태그 대신에 프래그먼트의 태그(header)로 교체 됨. -->
+        <div th:replace="~{/layout/header :: myHeader('인덱스 페이지')}"></div>
+    
+        <!-- thymeleaf fragment expressions:
+            /layout/header.html 파일에서 선언된 navigation 프래그먼트를 insert(삽입) 방식으로 끼워 넣기 -->
+        <div th:insert="~{/layout/header :: navigation}"></div>
+        
+        <!-- thymeleaf variable expreesions -->
+		<h1>첫번째 스프링 부트 프로젝트</h1>
+        <h2 th:text="${currentTime}">현재 시간</h2>
+        <h3 th:text="${book}"></h3>
+        
+        <div>
+            ID: <span th:text="${book.id}"></span> <br>
+            제목: <span th:text="${book.title}"></span> <br>
+            저자: <span th:text="|${book.author.lastName} ${book.author.firstName}|"></span>
+        </div>
+        <hr>
+        <!-- thymeleaf selection expressions -->
+        <div th:object="${book}">
+            ID: <span th:text="*{id}"></span> <br>
+            제목: <span th:text="*{title}"></span> <br>
+            저자: <span th:text="|*{author.lastName} *{author.firstName}|"></span>
+        </div>
+        
+        <ul>
+            <li>
+                <!-- thymeleaf link(URL) expressions -->
+                <a th:href="@{/book/list}">도서 목록</a>
+            </li>
+            <li>
+                <!-- thymeleaf link(URL) expressions에서 질의 문자열(query string)을 작성하는 방법 -->
+                <a th:href="@{/book/details(id=1)}">도서1 상세 페이지</a>
+            </li>
+            <li>
+                <!-- thymeleaf link(URL) expressions에서 경로 변수(path variable)을 작성하는 방법 -->
+                <!-- <a href="/book/details/2>도서2 상세 페이지<a> -->
+                <a th:href="@{/book/details/{id}(id=2)}">도서2 상세 페이지</a>
+            </li>
+                <!-- thymeleaf link(URL) expressions에서 질의 문자열을 인코딩하여 작성하는 방법 -->
+            <li th:with="val='a&b한'">
+                <a th:href="@{/book/details(id=${val})}">a&b한 페이지</a>
+            </li>
+        </ul>
+	</body>
+</html>

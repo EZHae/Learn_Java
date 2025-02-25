@@ -1,0 +1,25 @@
+@charset "UTF-8"; /* CSS 파일의 인코딩 선언 */
+
+/* CSS 문법:
+    selector {
+        property: value;
+        ...
+    }
+*/
+
+body {
+    background-color: lightgray; /* 바탕색 설정 */
+}
+
+main {
+    border: 2px solid black; /* 테두리선 굵기, 모양, 색깔 설정 */
+    margin: 4px; /* 테두리선 바깥 여백 */
+    padding: 4px; /* 테두리선 안쪽 여백 */
+}
+
+div {
+    border: 2px solid white;
+    margin: 8px;
+    padding: 16px;
+}
+

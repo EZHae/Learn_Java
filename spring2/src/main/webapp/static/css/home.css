@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.line-clamp-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keeps text to a single line */
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limits to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

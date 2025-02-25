@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab01</title>
+        <style>
+            /* URL 텍스트 크기 키우기 */
+            #current-url {
+                font-size: 24px; /* 텍스트 크기 설정 */
+                font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+            }
+        </style>
+	</head>
+	<body>
+		<h1>결과 페이지</h1>
+        
+        <ul>
+            <li> <a href="index.html">인덱스 페이지</a> </li>
+            <li> <a href="form.html">폼 양식 페이지</a> </li>
+        </ul>
+        <br>
+        
+        <!-- 현재 URL을 출력 -->
+        <p>현재 URL: </p>
+        <span id="current-url"></span>
+        
+        <script>
+            // 현재 URL을 JavaScript로 가져와서 표시
+            document.getElementById('current-url').textContent = window.location.href;
+        </script>
+	</body>
+</html>

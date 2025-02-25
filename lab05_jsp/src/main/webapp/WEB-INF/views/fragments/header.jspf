@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+
+<header class="mt-2 p-4 bg-primary text-white text-center">
+    <h1>${ pageTitle }</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <c:url value="/" var="homePage"/>
+        <a class="navbar-brand" href="${ homePage }">Home</a>
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <c:url value="/post/list" var="postListPage"/>
+                    <a class="nav-link" href="${ postListPage }">목록</a>
+                </li>
+                <li class="nav-item">
+                    <c:url value="/post/create" var="postCreatePage"/>
+                    <a class="nav-link" href="${ postCreatePage }">새 글</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">계정</a>
+                    <ul class="dropdown-menu">
+                        <!-- 세션에 signedInUser 속성이 없을 때(로그아웃 상태일 때) -->
+                        <c:if test="${ empty signedInUser }">
+                            <li>
+                                <c:url value="/user/signup" var="userSignUpPage"/>
+                                <a class="nav-link" href="${ userSignUpPage }">회원가입</a>
+                            </li>
+                            <li>
+                                <c:url value="/user/signin" var="userSignInPage"/>
+                                <a class="nav-link" href="${ userSignInPage }">로그인</a>
+                            </li>
+                        </c:if>
+                        <!-- 세션에 signedInUser 속성이 저장 되어 있을 때(로그인 상태일 때) -->
+                        <c:if test="${ !empty signedInUser }">
+                            <li>
+                                <c:url value="/user/signout" var="userSignOutPage"/>
+                                <a class="nav-link" href="${ userSignOutPage }">
+                                    <span>${ signedInUser }</span> 로그아웃
+                                </a>
+                            </li>
+                        </c:if>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

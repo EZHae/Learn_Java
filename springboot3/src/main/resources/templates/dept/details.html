@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{/layout/fragments :: htmlHead('부서 상세')}"></head>
+	<body>
+		<div th:replace="~{/layout/fragments :: pageHeader('부서 상세 페이지')}"></div>
+        
+        <main class="mt-2">
+            <section class="mt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>부서 상세 정보</h2>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tbody th:object="${dept}">
+                            <tr>
+                                <th>부서번호</th>
+                                <td th:text="*{departmentId}"></td>
+                            </tr>
+                            <tr>
+                                <th>부서이름</th>
+                                <td th:text="*{departmentName}">
+                            </tr>
+                            <tr>
+                                <th>관리자</th>
+                                <td th:switch="*{manager}">
+                                    <th:block th:case="null">-</th:block>
+                                    <a th:case="*" th:href="@{/emp/details/{id}(id=*{manager.id})}"
+                                        th:text="|*{manager.firstName} *{manager.lastName}|"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>위치</th>
+                                <td th:text="|*{location.streetAddress}, *{location.city}, *{location.stateProvince}, *{location.country.id}|"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section class="mt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 th:text="${'직원 목록 (' + #lists.size(dept.employees) + '명)'}">직원 목록</h2>
+                    </div>
+                    <div class="card-body">
+                        <th:block th:switch="${#lists.isEmpty(dept.employees)}">
+                            <span th:case="true">부서에 소속된 직원이 없습니다.</span>
+                            <table th:case="*" class="table table-striped table-hover">
+                                <tr>
+                                    <th>사번</th>
+                                    <th>이름</th>
+                                    <th>이메일</th>
+                                    <th>전화번호</th>
+                                    <th>입사일</th>
+                                    <th>직책</th>
+                                    <th>급여</th>
+                                    <th>수당 비율</th>
+                                    <th>매니저</th>
+                                    <th>부서이름</th>
+                                </tr>
+                                <tr th:each="emp : ${dept.employees}" th:object="${emp}">
+                                    <td>
+                                        <a th:href="@{/emp/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/emp/details/{id}(id=*{id})}" th:text="|*{firstName} *{lastName}|"></a>
+                                    </td>
+                                    <td th:text="*{email}"></td>
+                                    <td th:text="*{phoneNumber}"></td>
+                                    <td th:text="*{hireDate}"></td>
+                                    <td th:text="*{job.id}"></td>
+                                    <td th:text="*{salary}"></td>
+                                    <td th:text="*{commissionPct == null} ? '-' : *{commissionPct}"></td>
+                                    <td th:switch="*{manager}">
+                                        <th:block th:case="null">-</th:block>
+                                        <a th:case="*" th:href="@{/emp/details/{id}(id=*{manager.id})}"
+                                            th:text="|*{manager.firstName} *{manager.lastName}|"></a>
+                                    </td>
+                                    <td th:switch="*{department}">
+                                        <th:block th:case="null">-</th:block>
+                                        <a th:case="*" th:href="@{/dept/details/{id}(id=*{department.id})}"
+                                            th:text="*{department.departmentName}"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </th:block>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+	</body>
+</html>

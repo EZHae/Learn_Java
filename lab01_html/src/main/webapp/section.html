@@ -1,0 +1,61 @@
+<!-- HTML tag 분류
+1. Block 요소: 
+    - 자동으로 줄 바꿈이 되는 요소. 다른 요소의 아래쪽에 배치되는 요소.
+    - 가로(width), 세로(height) 크기를 설정할 수 있는 요소.
+    예시) h1, h2, ..., div, p, ul, li, form, table, ...
+2. inline 요소: 
+    - 자동으로 줄 바꿈이 되지 않는 요소. 다른 요소의 오른쪽에 배치되는 요소.
+    - 가로(width), 세로(height) 크기를 설정할 수 없는 요소.
+    예시) a, span, ...
+3. inline-block 요소:
+    - 다른 요소의 오른쪽에 배치되는 요소. (inline 요소 특징)
+    - 가로(width), 세로(heifht) 크기를 설정할 수 있는 요소. (block 요소 특징)
+    예시) img,  
+-->
+<!-- style 속성
+border: 선굵기 선모양 선색깔;
+    객체에 테두리의 속성을 설정
+    solid: 실선
+    dotted: 점선
+    dashed: 대쉬선
+margin: 마진 넓이;
+    배경과 객체의 상하좌우 마진 넓이 설정
+padding: 여백 넓이;
+    컨텐트와 객체 사이의 여백 넓이 설정
+width: 객체의 넓이;
+height: 객체의 높이;
+color: 객체의 색깔;
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab01</title>
+    </head>
+    <body>
+        <a href="index.html">인덱스 페이지</a>
+        
+        <h1>Section Tag</h1>
+        
+        <h2>Block Section tag</h2>
+        <!-- <div>: Division(빈 영역) -->
+        <div style="border: 2px solid black; margin: 16px; padding: 16px; width: 160px; height: 80px;">Division 1</div>
+        <div>Division 2</div>
+        <div>
+            <!-- <p>: Paragraph(단락, 문단) -->
+            <p style="border: 1px dashed red;;">Paragraph(단락, 문단)</p>
+            <p style="border: 1px dotted green;">문단 2</p>
+        </div>
+        
+        <hr /> <!-- <hr>: horizontal ruler(가로선) -->
+        
+        <h2>Inline Section Tag</h2>
+        <!-- <span>: 섹션을 설정하기 위한 태그 -->
+        <span style="width: 160px; height: 80px; color: red;">inline(인라인)</span> <!-- Inline은 크기 변경 불가 -->
+        <span style="color: green">element(요소)</span>
+        섹션을 설정하기 위한 태그.
+        <br /> <!-- <br>: line break(줄 바꿈) -->
+        test <br /> 줄 바꿈을 하였기 때문에 밑에 줄에 출력됨.
+    </body>
+</html>

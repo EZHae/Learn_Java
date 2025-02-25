@@ -1,0 +1,68 @@
+<!--자식(child), 자손(descendent) 요소 선택자
+    (1) child element: HTML 문서 구조에서 바로 아래에 있는 요소들. (body - nav, body - main)
+        parent-selector > child-selector
+    (2) descendent element: HTML 구조에서 아래에 있는 모든 요소들. (body - main - section - p...)
+        ancestor-selctor descendent-selctor -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab2 CSS</title>
+        
+        <style>
+            /* 모든 section 요소들의 테두리선과 마진을 설정 */
+            section { 
+                border: 2px solid darkgray;
+                margin: 16px; 
+            }
+            
+            /* 스타일을 적용할 요소들을 나열 - css 선택자들을 쉼표(,)로 구분 */
+            section#sect1, p { /* <section> 중에서 아이디가 sect1인 요소, 모든 <p> */
+                border: 4px solid darkgreen;
+                margin: 16px;
+            }
+            
+            
+            /* 자식 선택자를 사용하여 특정 요소만 설정 */
+            section#sect2 > p { /* <section> 중에서 아이디가 sect2인 요소의 자식 <p> 요소 */
+                border: 1px solid black;
+                color: crimson;
+            }
+            
+            /* 자손 선택자를 사용하여 특정 요소만 설정 */
+            section#sect3 p { /* <section> 중에서 아이디가 sect2인 요소의 모든 <p> 요소 */
+                border: 1px solid black;
+                color: dodgerblue;
+            }
+        </style>
+	</head>
+	<body>
+		<nav> <a href="index.html">인덱스 페이지</a> </nav>
+        <main>
+            <h1>CSS Selector 2</h1>
+            
+            <section id="sect1">
+                <p>Section 1, Paragraph 1</p>
+                <p>Section 1, Paragraph 2</p>
+                <article> <!-- 기사 영역(article division) -->
+                    <p>Section 1, Artircle, Paragraph</p>
+                </article>
+            </section>
+            <section id="sect2">
+                <p>Section 2, Paragraph 1</p>
+                <p>Section 2, Paragraph 2</p>
+                <article> <!-- 기사 영역(article division) -->
+                    <p>Section 2, Artircle, Paragraph</p>
+                </article>
+            </section>
+            <section id="sect3">
+                <p>Section 3, Paragraph 1</p>
+                <p>Section 3, Paragraph 2</p>
+                <article> <!-- 기사 영역(article division) -->
+                    <p>Section 3, Artircle, Paragraph</p>
+                </article>
+            </section>
+        </main>
+	</body>
+</html>

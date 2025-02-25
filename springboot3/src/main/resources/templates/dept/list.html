@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{/layout/fragments :: htmlHead('부서 목록')}"></head>
+	<body>
+		<div th:replace="~{/layout/fragments :: pageHeader('부서 목록 페이지')}"></div>
+        
+        <main class="mt-2">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>부서번호</th>
+                        <th>부서이름</th>
+                        <th>관리자</th>
+                        <th>부서 위치</th>
+                        <th>인원</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="dept : ${depts}" th:object="${dept}">
+                        <td>
+                            <a th:href="@{/dept/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/dept/details/{id}(id=*{id})}" th:text="*{departmentName}"></a>
+                        </td>
+                        <td th:switch="*{manager}">
+                            <th:block th:case="null">-</th:block>
+                            <a th:case="*" th:href="@{/emp/details/{id}(id=*{manager.id})}" 
+                                th:text="|*{manager.firstName} *{manager.lastName}|"></a>
+                        </td>
+                        <td th:text="*{location.city}"></td>
+                        <td th:text="*{#lists.size(employees)} + '명'"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+        <nav th:replace="~{layout/fragments :: page}"></nav>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+	</body>
+</html>

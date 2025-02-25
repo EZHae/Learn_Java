@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab03 JS</title>
+        <style>
+            section {
+                margin: 4px;
+                border: 1px solid lightgray;
+                border-radius: 4px;
+            }
+            
+            section > div {
+                border: 2px solid black;
+                margin: 16px;
+                padding: 16px;
+            }
+        </style>
+	</head>
+	<body>
+		<header>
+            <h1>JavaScript 소개</h1>
+        </header>
+        
+        <nav>
+            <h2>목차</h2>
+            <ul>
+                <li> <a href="condition.html">조건문</a> </li>
+                <li> <a href="switch.html">switch-case</a> </li>
+                <li> <a href="for.html">for 반복문</a> </li>
+                <li> <a href="while.html">while 반복문</a> </li>
+                <li> <a href="array.html">배열</a> </li>
+                <li> <a href="function.html">함수</a> </li>
+                <li> <a href="array_function.html">배열 함수(메서드)</a> </li>
+                <li> <a href="object.html">객체(Object)</a> </li>
+                <li> <a href="destructure.html">구조분해 할당</a> </li>
+                <li> <a href="element.html">HTML 요소 찾기</a> </li>
+                <li> <a href="eventlistener.html">이벤트 리스너</a> </li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section>
+                <h2>HTML 컨텐트 변경</h2>
+                <div id=box1 onclick="changeContent()">
+                    여기는 Box1 입니다.
+                </div>
+            </section>
+            <section>
+                <h2>HTML 스타일 변경</h2>
+                <div id=box2 onclick="changeStyle()">
+                    여기는 Box2 입니다.
+                </div>
+            </section>
+            <section>
+                <h2>클릭 카운트</h2>
+                <div id=box3 onclick="clickCount(box3)">
+                    클릭하세요.
+                </div>
+            </section>
+            <section>
+                <h2>랜덤 뽑기</h2>
+                <div id=box4 onclick="randomNumber(box4)">
+                    클릭하세요.
+                </div>
+            </section>
+            <section>
+                <h2>숨기기</h2>
+                <div id=box5 onclick="hide(box5)">
+                    클릭하세요.
+                </div>
+            </section>
+        </main>
+        
+        <!-- HTML 파일 안에서 JS 작성하는 방법 -->
+        <script>
+        /* 
+            JS 블럭 주석 (block comment)
+        */
+        //  JS 인라인 주석 (inline comment)
+            /* JS 변수 선언: */
+            //  const 변수이름: 값; --> 값을 변경할 수 없는 변수(상수) 선언, 초기화.
+            //  let 변수이름 = 값; --> 값을 변경할 수 있는 변수 선언, 초기화.
+            //  - JS는 변수를 선언할 때 변수의 타입을 명시하지 않음.
+            //  - JS는 문자열에서 큰따옴표("")와 작은따옴표('')를 모두 사용 가능.	 
+            
+            const content1 = "여기는 Box1 입니다.";
+            const content2 = "Hello. <strong>JavaScript<strong>!";
+            let toggle = true;
+            
+            /* JS 함수 선언: */ 
+            //  function 함수이름(파라미터 선언) {...}
+            //  - 함수 이름 앞에 리턴 타입을 명시하지 않음.
+            function changeContent() {
+            	// 아이디가 box1인 HTML 요소를 찾음.
+            	const box1 = document.querySelector('#box1');
+                if (toggle) {
+                	// HTML 요소의 컨텐트()
+                	box1.innerHTML = content2;
+                	toggle = false;
+                } else {
+                	box1.innerHTML = content1;
+                	toggle = true;
+                }
+            }
+            
+            function changeStyle() {
+            	const box2 = document.querySelector('#box2');
+            	box2.style.backgroundColor = "dodgerblue";
+            	box2.style.color = "white";
+            	box2.style.fontSize = "200%";
+            	box2.style.fontWeight = "bold";
+            }
+        </script>
+        
+        <!-- 별도로 작성된 JS 파일을 HTML에 포함. -->
+        <script src="js/introduction.js"></script>
+	</body>
+</html>

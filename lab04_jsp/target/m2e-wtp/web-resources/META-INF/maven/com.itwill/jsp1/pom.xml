@@ -1,0 +1,62 @@
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.itwill</groupId>
+    <artifactId>jsp1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Servlet/JSP</name>
+    <description>Introduction to Servlet/JSP</description>
+    
+    <!-- POM(Project Object Model
+        o. 메이븐(Maven) 프로젝트를 관리, 빌드, 배프할 때 사용하는 파일.
+        o. 의존성(dependencies) 태그 안에서 프로젝트에 필요한 라이브러리를 설정.
+           -> 메이븐 툴이 필요한 라이브러리를 다운로드하고 빌드 패스에 추가.
+                * 메이븐은 필요한 라이브러리를 로컬 저장소에서 찾고 빌드 패스에 추가.
+                * 로컬 저장소에 라이브러리가 없는 경우 중앙(원격) 저장소에서 라이브러리를
+                  로컬 저장소로 다운로드를 먼저 하고 빌드 패스에 추가됨.
+                - 로컬 저장소 위치: C:\Users\ezhae\.m2\repository
+                - 원격 저장소 위치: search.maven.org
+    -->
+    
+    <!-- 의존성 추가 -->
+    <dependencies>
+        <!-- ▼ Jakarta EE -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- ▼ Jakarta Standard Tag Library API ▼ -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <!-- ▼ Jakarta Standard Tag Library Implementation ▼ -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+    </dependencies>
+    
+    
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
