@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{/layout/fragments :: htmlHead('Spring Boot 4')}"></head>
+	<body>
+		<th:block th:replace="~{/layout/fragments :: pageHeader('새 포스트')}"></th:block>
+        
+        <main class="mt-2">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <form method="post" th:action="@{/post/create}">
+                        <div class="mt-2">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="제목" 
+                                required autofocus>
+                        </div>
+                        <div class="mt-2">
+                            <textarea class="form-control" id="content" name="content" placeholder="내용"
+                                rows="15" wrap="hard" required></textarea>
+                        </div>
+                        <div class="mt-2">
+                            <input type="text" class="form-control" id="author" name="author" placeholder="작성자"
+                                required>
+                        </div>
+                        <div class="mt-2 d-flex justify-content-center">
+                            <input type="submit" class="btn btn-primary" value="작성">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                
+            </div>
+        </main>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+	</body>
+</html>

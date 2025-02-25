@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{/layout/fragments :: htmlHead('Spring Boot 4')}"></head>
+    <body>
+        <th:block th:replace="~{/layout/fragments :: pageHeader('포스트 목록')}"></th:block>
+    
+        <main class="mt-2">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <table class="mt-2 table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>글번호</th>
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>작성시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="post : ${posts}"
+                                th:object="${post}">
+                                <td th:text="*{id}"></td>
+                                <td><a th:text="*{title}"
+                                    th:href="@{/post/details/{id}(id=*{id})}"></a>
+                                </td>
+                                <td th:text="*{author}"></td>
+                                <td
+                                    th:text="*{#temporals.format(createdTime, 'yyyy-MM-dd HH:mm')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="card-footer">
+                    <th:block th:replace="~{/layout/fragments :: page}"></th:block>
+                </div>
+            </div>
+        </main>
+    
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+    </body>
+</html>

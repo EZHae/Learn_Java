@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{/layout/fragments :: htmlHead('Spring Boot 4')}"></head>
+	<body>
+		<th:block th:replace="~{/layout/fragments :: pageHeader('포스트 상세보기')}"></th:block>
+        
+        <main class="mt-2">
+            <div class="card" th:object="${post}">
+                <div class="card-header">
+                    <h2 id="title" th:text="*{title}"></h2>
+                    <table>
+                        <tr>
+                            <th>작성자</th>
+                            <td class="ps-2" id="author" th:text="*{author}"></td>
+                        </tr>
+                        <tr>
+                            <th>작성시간</th>
+                            <td class="ps-2" id="createdTime" th:text="*{#temporals.format(createdTime, 'yyyy-MM-dd HH:mm')}"></td>
+                        </tr>
+                        <tr>
+                            <th>수정시간</th>
+                            <td class="ps-2" id="modifiedTime" th:text="*{#temporals.format(modifiedTime, 'yyyy-MM-dd HH:mm')}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-body">
+                    <textarea th:text="*{content}" class="form-control" id="content" name="content" rows="15" 
+                        required readonly></textarea>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center">
+                        <a th:href="@{/post/update/{id}(id=*{id})}" class="btn btn-success me-2">수정</a>
+                        <button class="btn btn-danger">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+	</body>
+</html>
