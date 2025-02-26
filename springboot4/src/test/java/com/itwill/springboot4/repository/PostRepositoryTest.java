@@ -1,6 +1,5 @@
 package com.itwill.springboot4.repository;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +68,7 @@ public class PostRepositoryTest {
 	@Test // 더미 데이터 생성
 	public void makeDummyData() {
 		List<Post> list = new ArrayList<Post>();
-		for (int i = 1; i <= 50; i ++) {
+		for (int i = 51; i <= 70; i ++) {
 			Post post = Post.builder()
 					.title("dummy title #" + i)
 					.content("더미 데이터 내용 #" + i)

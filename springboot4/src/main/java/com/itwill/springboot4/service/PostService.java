@@ -1,6 +1,5 @@
 package com.itwill.springboot4.service;
 
-import org.slf4j.helpers.Reporter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +10,7 @@ import com.itwill.springboot4.domain.Post;
 import com.itwill.springboot4.dto.PostCreateDto;
 import com.itwill.springboot4.dto.PostItemDto;
 import com.itwill.springboot4.dto.PostPageDto;
+import com.itwill.springboot4.dto.PostUpdateDto;
 import com.itwill.springboot4.repository.PostRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -23,10 +23,33 @@ public class PostService {
 
     private final PostRepository postRepo;
 
-    public PostPageDto read(int page, int pageSize, int pageBlock) {
+    public PostPageDto read(int page, int pageSize, int pageBlock, String category, String keyword) {
         int basePage = page - 1;
         Pageable pageable = PageRequest.of(basePage, pageSize, Sort.by("id").descending());
-        Page<Post> posts = postRepo.findAll(pageable);
+
+        Page<Post> posts;
+
+        switch (category) {
+            case "t":
+                // 제목에서 대소문자 구분 없이 검색
+                posts = postRepo.findByTitleContainingIgnoreCase(keyword, pageable);
+                break;
+            case "c":
+                // 내용에서 대소문자 구분 없이 검색
+                posts = postRepo.findByContentContainingIgnoreCase(keyword, pageable);
+                break;
+            case "a":
+                // 작성자에서 대소문자 구분 없이 검색
+                posts = postRepo.findByAuthorContainingIgnoreCase(keyword, pageable);
+                break;
+            case "tc":
+                // 제목과 내용에서 대소문자 구분 없이 검색
+                posts = postRepo.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(keyword, keyword, pageable);
+                break;
+            default:
+                posts = postRepo.findAll(pageable);
+                break;
+        }
 
         Page<PostItemDto> postDto = posts.map((post) -> PostItemDto.fromEntity(post));
         postDto.forEach((postItemDto) -> log.info("{}", postItemDto));
@@ -46,16 +69,22 @@ public class PostService {
     }
     
     public long create(PostCreateDto dto) {
-    	Post post = Post.builder()
-    			.title(dto.getTitle())
-    			.content(dto.getContent())
-    			.author(dto.getAuthor())
-    			.build();
-    	
-    	Post createdPost = postRepo.save(post);
+    	Post createdPost = postRepo.save(dto.toEntity());
     	
     	long result = createdPost.getId();
     	
     	return result;
+    }
+
+    public void update(PostUpdateDto dto) {
+        Post post = postRepo.findById(dto.getId()).orElseThrow();
+        log.info("beforePost={}", post);
+
+        Post updatedPost = postRepo.save(post.update(dto.getTitle(), dto.getContent()));
+        log.info("updatedPost={}", updatedPost);
+    }
+
+    public void delete(long id) {
+        postRepo.deleteById(id);
     }
 }

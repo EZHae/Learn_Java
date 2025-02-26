@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
-public class PostCreateDto {
-	
-	private String title;
-	private String content;
-	private String author;
+public class PostUpdateDto {
 
-	public Post toEntity() {
-		return Post.builder()
-			.title(title)
-			.content(content)
-			.author(author)
-			.build();
-	}
+    private long id;
+    private String title;
+    private String content;
+
+    public Post toEntity() {
+        return Post.builder()
+            .id(id)
+            .title(title)
+            .content(content)
+            .build();
+    }
 }

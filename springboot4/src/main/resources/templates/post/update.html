@@ -11,6 +11,7 @@
                         <input type="text" class="form-control" id="title" name="title" placeholder="제목"
                             th:value="*{title}" required autofocus>
                     </div>
+                    <input class="d-none" id="id" name="id" th:value="*{id}">
                     <table>
                         <tr>
                             <th>작성자</th>
@@ -32,12 +33,14 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-outline-success">수정하기</button>
+                        <button class="btn btn-outline-success" id="btnUpdate">수정하기</button>
                     </div>
                 </div>
             </div>
         </main>
         
+        <script th:src="@{/js/post-update.js}"></script>
         <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+        <th:block th:replace="~{/layout/fragments :: axiosJS}"></th:block>
 	</body>
 </html>
